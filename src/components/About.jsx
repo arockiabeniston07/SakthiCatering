@@ -85,7 +85,7 @@ const About = () => {
                 viewport={{ once: true }}
                 className="w-full aspect-[4/5] md:aspect-square rounded-sm overflow-hidden shadow-2xl"
               >
-                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop" alt="Elegant service" loading="lazy" decoding="async" className="w-full h-full object-cover" />
+                <img src="image/o1.png" alt="Elegant service" loading="lazy" decoding="async" className="w-full h-full object-cover" />
               </motion.div>
               {/* IMAGE 2: Circular Logo */}
               <motion.div 
@@ -103,7 +103,7 @@ const About = () => {
                 viewport={{ once: true }}
                 className="w-full aspect-[4/5] md:aspect-square rounded-sm overflow-hidden shadow-2xl"
               >
-                <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=2069&auto=format&fit=crop" alt="Fine details" loading="lazy" decoding="async" className="w-full h-full object-cover" />
+                <img src="image/o2.jpeg" alt="Fine details" loading="lazy" decoding="async" className="w-full h-full object-cover" />
               </motion.div>
             </div>
             
