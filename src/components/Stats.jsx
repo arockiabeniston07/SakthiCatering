@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion, useMotionValue, animate, useTransform, useScroll, useReducedMotion } from 'framer-motion';
 import { siteConfig } from '../data/siteConfig';
 
-const Counter = ({ value, suffix, label }) => {
+const Counter = ({ value, suffix, label, subLabel }) => {
   const count = useMotionValue(0);
   const rounded = useTransform(count, Math.round);
   const display = useTransform(rounded, (latest) => latest.toLocaleString());
@@ -43,8 +43,13 @@ const Counter = ({ value, suffix, label }) => {
           {suffix}
         </motion.span>
       </div>
-      <div className="text-xs text-luxury-muted tracking-[0.2em] uppercase">
-        {label}
+      <div className="flex flex-col items-center gap-1 mt-2">
+        <div className="text-sm md:text-base text-luxury-cream">
+          {label}
+        </div>
+        <div className="text-[10px] md:text-xs text-luxury-muted tracking-[0.2em] uppercase">
+          {subLabel}
+        </div>
       </div>
     </motion.div>
   );
@@ -89,7 +94,7 @@ const Stats = () => {
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.8, delay: index * 0.15, ease: "easeOut" }}
             >
-              <Counter value={stat.value} suffix={stat.suffix} label={stat.label} />
+              <Counter value={stat.value} suffix={stat.suffix} label={stat.label} subLabel={stat.subLabel} />
             </motion.div>
           ))}
         </div>

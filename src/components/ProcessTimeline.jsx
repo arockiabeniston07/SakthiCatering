@@ -2,11 +2,31 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const steps = [
-  { id: '01', title: 'TELL US', desc: 'Share your event details, vision, and preferences.' },
-  { id: '02', title: 'WE PLAN', desc: 'We shape the menu, determine quantities, and organize service.' },
-  { id: '03', title: 'WE PREPARE', desc: 'Sourcing fresh ingredients and careful culinary preparation.' },
-  { id: '04', title: 'WE SERVE', desc: 'Flawless, professional service at your venue.' },
-  { id: '05', title: 'YOU CELEBRATE', desc: 'You enjoy the moment, we handle the rest.' },
+  { 
+    id: '01', 
+    title: 'எங்களிடம் கூறுங்கள்', subtitle: 'TELL US', 
+    desc: 'உங்கள் நிகழ்வின் விவரங்கள், எதிர்பார்ப்புகள் மற்றும் விருப்பங்களை பகிரவும்.', subDesc: 'Share your event details, vision, and preferences.' 
+  },
+  { 
+    id: '02', 
+    title: 'நாங்கள் திட்டமிடுகிறோம்', subtitle: 'WE PLAN', 
+    desc: 'நாங்கள் மெனுவை உருவாக்குகிறோம், அளவுகளை தீர்மானிக்கிறோம் மற்றும் சேவையை ஏற்பாடு செய்கிறோம்.', subDesc: 'We shape the menu, determine quantities, and organize service.' 
+  },
+  { 
+    id: '03', 
+    title: 'நாங்கள் தயாரிக்கிறோம்', subtitle: 'WE PREPARE', 
+    desc: 'புதிய பொருட்களை பெற்று கவனமாக சமையல் தயாரிப்பு செய்கிறோம்.', subDesc: 'Sourcing fresh ingredients and careful culinary preparation.' 
+  },
+  { 
+    id: '04', 
+    title: 'நாங்கள் பரிமாறுகிறோம்', subtitle: 'WE SERVE', 
+    desc: 'உங்கள் இடத்தில் குறைபாடற்ற, தொழில்முறை சேவை வழங்குகிறோம்.', subDesc: 'Flawless, professional service at your venue.' 
+  },
+  { 
+    id: '05', 
+    title: 'நீங்கள் கொண்டாடுங்கள்', subtitle: 'YOU CELEBRATE', 
+    desc: 'நீங்கள் தருணத்தை மகிழ்ந்து கொண்டாடுங்கள், மற்றவற்றை நாங்கள் கையாளுகிறோம்.', subDesc: 'You enjoy the moment, we handle the rest.' 
+  },
 ];
 
 const ProcessTimeline = () => {
@@ -32,8 +52,16 @@ const ProcessTimeline = () => {
             viewport={{ once: true }}
             className="font-serif text-3xl md:text-5xl text-luxury-cream mb-4"
           >
-            HOW WE MAKE IT <span className="text-luxury-gold italic">HAPPEN</span>
+            நாங்கள் எப்படி <span className="text-luxury-gold italic">செயல்படுகிறோம்</span>
           </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-luxury-muted text-sm md:text-base font-light tracking-widest uppercase"
+          >
+            HOW WE MAKE IT HAPPEN
+          </motion.p>
         </div>
 
         <div className="relative">
@@ -60,8 +88,10 @@ const ProcessTimeline = () => {
                   <div className="md:hidden w-[1px] h-12 bg-luxury-muted/20 absolute top-24 left-1/2 -translate-x-1/2" />
                 )}
 
-                <h3 className="text-luxury-cream text-lg tracking-widest mb-4">{step.title}</h3>
-                <p className="text-luxury-muted text-sm font-light px-4 md:px-6">{step.desc}</p>
+                <h3 className="text-luxury-cream text-lg tracking-widest mb-1">{step.title}</h3>
+                <p className="text-luxury-gold text-[10px] md:text-xs tracking-widest uppercase mb-4 opacity-80">{step.subtitle}</p>
+                <p className="text-luxury-muted text-sm font-light px-4 md:px-6 mb-2">{step.desc}</p>
+                <p className="text-luxury-muted text-[10px] md:text-xs font-light px-4 md:px-6 opacity-70">{step.subDesc}</p>
               </motion.div>
             ))}
           </div>

@@ -41,16 +41,17 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.5 }}
         >
-          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-luxury-cream mb-4 md:mb-6 max-w-5xl leading-[1.1]">
-            A TABLE WORTH<br />
-            <span className="text-luxury-gold italic">REMEMBERING.</span>
+          <h1 className="font-tamil text-5xl md:text-7xl lg:text-8xl text-luxury-cream mb-4 md:mb-6 max-w-5xl leading-[1.1] font-medium tracking-wide break-words">
+            நினைவில் நிற்கும்<br />
+            <span className="text-luxury-gold italic">விருந்து.</span>
           </h1>
-          <h2 className="font-tamil text-2xl md:text-3xl lg:text-4xl text-luxury-cream mb-8 md:mb-12 font-medium tracking-wide break-words">
-            நினைவில் நிற்கும் விருந்து.
+          <h2 className="font-serif text-2xl md:text-3xl lg:text-4xl text-luxury-cream mb-8 md:mb-12 uppercase">
+            A TABLE WORTH REMEMBERING.
           </h2>
-          <p className="text-luxury-muted text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light">
-            {siteConfig.hero.subheading}
-          </p>
+          <div className="text-luxury-muted text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light">
+            <p className="mb-2">திருமணங்கள், கொண்டாட்டங்கள், பெருநிறுவன நிகழ்வுகள் மற்றும் மறக்க முடியாத தருணங்களுக்கான சிறப்பான உணவு சேவை.</p>
+            <p className="text-sm md:text-base opacity-80 uppercase">{siteConfig.hero.subheading}</p>
+          </div>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <a 
@@ -58,14 +59,14 @@ const Hero = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Enquire on WhatsApp"
-              className="px-8 py-4 bg-luxury-gold text-luxury-black text-sm tracking-widest hover:bg-luxury-cream transition-colors duration-300"
+              className="px-8 py-3 bg-luxury-gold text-luxury-black text-sm md:text-base tracking-widest hover:bg-luxury-cream transition-colors duration-300 flex items-center justify-center uppercase"
             >
               ENQUIRE ON WHATSAPP &rarr;
             </a>
             <a 
               href={`tel:${siteConfig.phone.replace(/\s/g, '')}`}
               aria-label="Call Us"
-              className="px-8 py-4 border border-luxury-muted text-luxury-cream text-sm tracking-widest hover:border-luxury-gold hover:text-luxury-gold transition-colors duration-300"
+              className="px-8 py-3 border border-luxury-muted text-luxury-cream text-sm md:text-base tracking-widest hover:border-luxury-gold hover:text-luxury-gold transition-colors duration-300 flex items-center justify-center uppercase"
             >
               CALL US &rarr;
             </a>

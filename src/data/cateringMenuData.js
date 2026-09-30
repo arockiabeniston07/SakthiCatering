@@ -1,6 +1,7 @@
 export const cateringMenu = {
   morning: {
-    label: "MORNING",
+    label: "காலை",
+    subLabel: "MORNING",
     categories: [
       {
         id: "morning-sweets",
@@ -197,7 +198,8 @@ export const cateringMenu = {
   },
 
   afternoon: {
-    label: "AFTERNOON",
+    label: "மதியம்",
+    subLabel: "AFTERNOON",
     categories: [
       {
         id: "afternoon-sweets",
@@ -511,7 +513,8 @@ export const cateringMenu = {
   },
 
   night: {
-    label: "NIGHT",
+    label: "இரவு",
+    subLabel: "NIGHT",
     categories: [
       {
         id: "night-welcome-drinks",

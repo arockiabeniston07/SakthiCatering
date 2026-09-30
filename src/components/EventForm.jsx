@@ -48,8 +48,7 @@ const EventForm = ({ selectedMenuItems = [], removeMenuItem }) => {
   const validateField = (name, value) => {
     switch (name) {
       case 'name':
-        if (!value) return "Name is required.";
-        if (!/^[a-zA-Z\s]+$/.test(value)) return "Only letters and spaces are allowed.";
+        if (!value.trim()) return "Name is required.";
         return "";
       case 'phone':
         if (!value) return "Phone number is required.";
@@ -74,8 +73,7 @@ const EventForm = ({ selectedMenuItems = [], removeMenuItem }) => {
         if (num % 500 !== 0) return "Guests must be in multiples of 500.";
         return "";
       case 'location':
-        if (!value) return "Location is required.";
-        if (!/^[a-zA-Z\s]+$/.test(value)) return "Only letters and spaces are allowed.";
+        if (!value.trim()) return "Location is required.";
         return "";
       default:
         return "";
@@ -86,7 +84,7 @@ const EventForm = ({ selectedMenuItems = [], removeMenuItem }) => {
     const { name, value } = e.target;
 
     if (name === 'name' || name === 'location') {
-      if (value && !/^[a-zA-Z\s]*$/.test(value)) return;
+      // Allow all Unicode characters including Tamil
     }
     if (name === 'phone') {
       if (value && !/^\d*$/.test(value)) return;
@@ -200,9 +198,8 @@ const EventForm = ({ selectedMenuItems = [], removeMenuItem }) => {
             viewport={{ once: true }}
             className="bg-luxury-gray/10 border border-luxury-gold/20 rounded-2xl p-8 md:p-10 flex flex-col items-center text-center shadow-lg"
           >
-            <h2 className="font-serif text-3xl md:text-4xl text-luxury-cream mb-10 leading-[1.1] uppercase tracking-wide">
-              MEET OUR<br />
-              <span className="text-luxury-gold italic">FOUNDER</span>
+            <h2 className="font-serif text-2xl md:text-3xl text-luxury-cream mb-10 leading-[1.1] tracking-wide uppercase">
+              MEET OUR <span className="text-luxury-gold italic">FOUNDER</span>
             </h2>
 
             {/* Founder Image Placeholder / Circular */}
@@ -216,8 +213,8 @@ const EventForm = ({ selectedMenuItems = [], removeMenuItem }) => {
 
             <div className="flex flex-col items-center w-full">
               <p className="font-serif text-2xl md:text-3xl text-luxury-cream mb-2 uppercase tracking-wider">Sakthi Rangaraj</p>
-              <p className="text-luxury-gold text-sm tracking-widest uppercase mb-1">Founder</p>
-              <p className="text-luxury-muted text-xs tracking-widest uppercase mb-8">Operations & Event Management</p>
+              <p className="text-luxury-gold text-sm font-tamil mb-1">நிறுவனர் <span className="text-[10px] uppercase opacity-80 font-sans tracking-widest ml-1">Founder</span></p>
+              <p className="text-luxury-muted text-xs font-tamil mb-8 text-center leading-relaxed">செயல்பாடுகள் மற்றும் நிகழ்வு மேலாண்மை <br/><span className="text-[9px] uppercase opacity-70 font-sans tracking-widest mt-1 block">Operations & Event Management</span></p>
 
               <p className="text-luxury-cream font-light text-lg md:text-xl tracking-wider mb-8">
                 {siteConfig.phone}
@@ -228,18 +225,18 @@ const EventForm = ({ selectedMenuItems = [], removeMenuItem }) => {
                   href={`https://wa.me/${siteConfig.whatsappNumber}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-4 bg-[#25D366] text-white text-sm tracking-widest hover:bg-[#128C7E] transition-colors duration-300 flex items-center justify-center gap-3 rounded"
+                  className="w-full py-4 bg-[#25D366] text-white text-sm tracking-widest hover:bg-[#128C7E] transition-colors duration-300 flex items-center justify-center gap-3 rounded uppercase"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
                   </svg>
-                  CHAT ON WHATSAPP
+                  <span>CHAT ON WHATSAPP</span>
                 </a>
                 <a
                   href={`tel:${siteConfig.phone.replace(/\s/g, '')}`}
-                  className="w-full py-4 bg-luxury-gold text-luxury-black text-sm tracking-widest hover:bg-luxury-cream transition-colors duration-300 flex items-center justify-center gap-3 rounded"
+                  className="w-full py-4 bg-luxury-gold text-luxury-black text-sm tracking-widest hover:bg-luxury-cream transition-colors duration-300 flex items-center justify-center gap-3 rounded uppercase"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
-                  CALL NOW
+                  <span>CALL NOW</span>
                 </a>
               </div>
             </div>
@@ -259,17 +256,17 @@ const EventForm = ({ selectedMenuItems = [], removeMenuItem }) => {
               className="grid grid-cols-1 md:grid-cols-2 gap-6"
             >
               <div className="flex flex-col gap-2 relative pb-4">
-                <label className="text-xs text-luxury-muted tracking-widest">FULL NAME *</label>
+                <label className="text-xs text-luxury-muted tracking-widest uppercase">FULL NAME *</label>
                 <input required type="text" name="name" value={formData.name} onChange={handleChange} onBlur={handleBlur} className={`bg-transparent border-b pb-2 text-luxury-cream focus:outline-none transition-colors ${errors.name ? 'border-red-500/50' : 'border-luxury-muted/30 focus:border-luxury-gold'}`} />
                 {errors.name && <span className="absolute bottom-0 left-0 text-[10px] text-red-400 tracking-wider">{errors.name}</span>}
               </div>
               <div className="flex flex-col gap-2 relative pb-4">
-                <label className="text-xs text-luxury-muted tracking-widest">PHONE NUMBER *</label>
+                <label className="text-xs text-luxury-muted tracking-widest uppercase">PHONE NUMBER *</label>
                 <input required type="tel" inputMode="numeric" maxLength="10" name="phone" value={formData.phone} onChange={handleChange} onBlur={handleBlur} className={`bg-transparent border-b pb-2 text-luxury-cream focus:outline-none transition-colors ${errors.phone ? 'border-red-500/50' : 'border-luxury-muted/30 focus:border-luxury-gold'}`} />
                 {errors.phone && <span className="absolute bottom-0 left-0 text-[10px] text-red-400 tracking-wider">{errors.phone}</span>}
               </div>
               <div className="flex flex-col gap-2 relative pb-4">
-                <label className="text-xs text-luxury-muted tracking-widest">EVENT TYPE *</label>
+                <label className="text-xs text-luxury-muted tracking-widest uppercase">EVENT TYPE *</label>
                 <select required name="eventType" value={formData.eventType} onChange={handleChange} onBlur={handleBlur} className={`bg-luxury-black border-b pb-2 text-luxury-cream focus:outline-none transition-colors appearance-none cursor-pointer ${errors.eventType ? 'border-red-500/50' : 'border-luxury-muted/30 focus:border-luxury-gold'}`}>
                   <option value="" disabled>Select Event Type</option>
                   <option value="Wedding">Wedding</option>
@@ -284,32 +281,37 @@ const EventForm = ({ selectedMenuItems = [], removeMenuItem }) => {
                 {errors.eventType && <span className="absolute bottom-0 left-0 text-[10px] text-red-400 tracking-wider">{errors.eventType}</span>}
               </div>
               <div className="flex flex-col gap-2 relative pb-4">
-                <label className="text-xs text-luxury-muted tracking-widest">EVENT DATE *</label>
+                <label className="text-xs text-luxury-muted tracking-widest uppercase">EVENT DATE *</label>
                 <input required type="date" name="eventDate" min={getMinDate()} value={formData.eventDate} onChange={handleChange} onBlur={handleBlur} className={`bg-transparent border-b pb-2 text-luxury-cream focus:outline-none transition-colors [color-scheme:dark] ${errors.eventDate ? 'border-red-500/50' : 'border-luxury-muted/30 focus:border-luxury-gold'}`} />
                 {errors.eventDate && <span className="absolute bottom-0 left-0 text-[10px] text-red-400 tracking-wider">{errors.eventDate}</span>}
               </div>
               <div className="flex flex-col gap-2 relative pb-4">
-                <label className="text-xs text-luxury-muted tracking-widest">NUMBER OF GUESTS *</label>
+                <label className="text-xs text-luxury-muted tracking-widest uppercase">NUMBER OF GUESTS *</label>
                 <input required type="number" min="500" max="100000" step="500" name="guests" value={formData.guests} onChange={handleChange} onBlur={handleBlur} className={`bg-transparent border-b pb-2 text-luxury-cream focus:outline-none transition-colors ${errors.guests ? 'border-red-500/50' : 'border-luxury-muted/30 focus:border-luxury-gold'}`} />
                 {errors.guests && <span className="absolute bottom-0 left-0 text-[10px] text-red-400 tracking-wider">{errors.guests}</span>}
               </div>
               <div className="flex flex-col gap-2 relative pb-4">
-                <label className="text-xs text-luxury-muted tracking-widest">EVENT LOCATION *</label>
+                <label className="text-xs text-luxury-muted tracking-widest uppercase">EVENT LOCATION *</label>
                 <input required type="text" name="location" value={formData.location} onChange={handleChange} onBlur={handleBlur} className={`bg-transparent border-b pb-2 text-luxury-cream focus:outline-none transition-colors ${errors.location ? 'border-red-500/50' : 'border-luxury-muted/30 focus:border-luxury-gold'}`} />
                 {errors.location && <span className="absolute bottom-0 left-0 text-[10px] text-red-400 tracking-wider">{errors.location}</span>}
               </div>
               <div className="flex flex-col gap-2 md:col-span-2 mt-4 relative pb-4">
-                <label className="text-xs text-luxury-muted tracking-widest">ADDITIONAL MESSAGE / REQUIREMENTS</label>
+                <label className="text-xs text-luxury-muted tracking-widest uppercase">ADDITIONAL MESSAGE / REQUIREMENTS</label>
                 <textarea name="notes" rows="3" value={formData.notes} onChange={handleChange} className="bg-transparent border-b border-luxury-muted/30 pb-2 text-luxury-cream focus:outline-none focus:border-luxury-gold transition-colors resize-none"></textarea>
               </div>
 
               <div id="selected-menu-preview" className="md:col-span-2 mt-8 transition-colors duration-500 rounded-sm p-1">
-                <h4 className="text-sm text-luxury-gold tracking-widest mb-6 border-b border-luxury-gray pb-4">YOUR SELECTED MENU</h4>
+                <h4 className="flex flex-col gap-1 text-sm text-luxury-gold tracking-widest mb-6 border-b border-luxury-gray pb-4">
+                  <span className="font-tamil">நீங்கள் தேர்ந்தெடுத்த மெனு</span>
+                  <span className="text-[10px] opacity-70 uppercase">YOUR SELECTED MENU</span>
+                </h4>
 
                 {selectedMenuItems.length === 0 ? (
                   <div className="p-8 text-center bg-luxury-black/30 border border-luxury-gray/50">
-                    <p className="text-luxury-muted">No dishes selected yet.</p>
-                    <p className="text-sm text-luxury-muted mt-2">Choose your favourites from BUILD YOUR FEAST.</p>
+                    <p className="text-luxury-muted font-tamil">இன்னும் உணவுகள் தேர்ந்தெடுக்கப்படவில்லை.</p>
+                    <p className="text-xs text-luxury-muted/70 mt-1 uppercase tracking-wider mb-3">No dishes selected yet.</p>
+                    <p className="text-sm text-luxury-muted font-tamil">BUILD YOUR FEAST பகுதியில் உங்களுக்குப் பிடித்தவைகளைத் தேர்ந்தெடுக்கவும்.</p>
+                    <p className="text-xs text-luxury-muted/70 mt-1 uppercase tracking-wider">Choose your favourites from BUILD YOUR FEAST.</p>
                   </div>
                 ) : (
                   <div className="flex flex-col gap-8 bg-luxury-black/30 border border-luxury-gray/50 p-6">
@@ -329,7 +331,10 @@ const EventForm = ({ selectedMenuItems = [], removeMenuItem }) => {
                           <div className="flex flex-col gap-4 pl-4 border-l border-luxury-gray/30">
                             {Object.values(categories).map(cat => (
                               <div key={cat.name}>
-                                <h6 className="text-luxury-muted text-xs tracking-widest uppercase mb-2">{cat.name}</h6>
+                                <h6 className="text-luxury-muted text-xs tracking-widest uppercase mb-2 flex flex-col gap-0.5">
+                                  <span className="font-tamil text-sm">{cat.name.split(' : ')[0] || cat.name}</span>
+                                  {cat.name.includes(' : ') && <span className="text-[9px] opacity-70">{cat.name.split(' : ')[1]}</span>}
+                                </h6>
                                 <ul className="flex flex-col gap-2">
                                   {cat.items.map(item => (
                                     <li key={item.id} className="flex justify-between items-center group">
@@ -337,9 +342,9 @@ const EventForm = ({ selectedMenuItems = [], removeMenuItem }) => {
                                       <button
                                         type="button"
                                         onClick={() => removeMenuItem(item.id)}
-                                        className="text-luxury-muted hover:text-red-400 text-xs tracking-widest transition-colors px-2 py-1 flex items-center gap-1 opacity-60 hover:opacity-100"
+                                        className="text-luxury-muted hover:text-red-400 text-[10px] tracking-widest transition-colors px-2 py-1 flex items-center gap-1 opacity-60 hover:opacity-100 uppercase"
                                       >
-                                        &times; Remove
+                                        &times; REMOVE
                                       </button>
                                     </li>
                                   ))}
@@ -355,8 +360,8 @@ const EventForm = ({ selectedMenuItems = [], removeMenuItem }) => {
               </div>
 
               <div className="md:col-span-2 mt-8">
-                <button type="submit" className="w-full md:w-auto px-12 py-4 bg-[#25D366] text-white text-sm tracking-widest hover:bg-[#128C7E] transition-colors duration-300 flex items-center justify-center gap-3">
-                  SEND ENQUIRY ON WHATSAPP &rarr;
+                <button type="submit" className="w-full md:w-auto px-12 py-3 bg-[#25D366] text-white text-[14px] md:text-base tracking-widest hover:bg-[#128C7E] transition-colors duration-300 flex items-center justify-center gap-2 rounded uppercase">
+                  <span>SEND ENQUIRY ON WHATSAPP &rarr;</span>
                 </button>
               </div>
             </motion.form>

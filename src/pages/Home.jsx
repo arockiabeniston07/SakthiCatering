@@ -4,13 +4,11 @@ import OpeningExperience from '../components/OpeningExperience';
 import Hero from '../components/Hero';
 import CelebrationSelector from '../components/CelebrationSelector';
 import MenuBuilder from '../components/MenuBuilder';
-import InteractiveTable from '../components/InteractiveTable';
 import ProcessTimeline from '../components/ProcessTimeline';
 import EventStories from '../components/EventStories';
 import Stats from '../components/Stats';
 import About from '../components/About';
 import Contact from '../components/Contact';
-import FinalCTA from '../components/FinalCTA';
 import Footer from '../components/Footer';
 import FloatingWhatsApp from '../components/FloatingWhatsApp';
 
@@ -53,7 +51,6 @@ const Home = () => {
           <CelebrationSelector />
         </div>
 
-        <InteractiveTable />
         <ProcessTimeline />
         
         <EventStories />
@@ -64,8 +61,6 @@ const Home = () => {
           selectedMenuItems={selectedMenuItems} 
           removeMenuItem={removeMenuItem} 
         />
-        
-        <FinalCTA />
       </main>
       <Footer />
 

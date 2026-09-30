@@ -68,7 +68,7 @@ const EventStories = () => {
       {/* Background Cinematic Layer */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="image\backg.webp" 
+          src="/image/backg.webp" 
           alt="Event Gallery Background" 
           loading="lazy"
           decoding="async"
@@ -85,17 +85,17 @@ const EventStories = () => {
             viewport={{ once: true }}
             className="font-serif text-4xl md:text-5xl lg:text-6xl text-luxury-cream mb-4"
           >
-            MOMENTS WE'VE <br className="hidden md:block" />
-            <span className="text-luxury-gold italic">SERVED</span>
+            நாங்கள் பரிமாறிய <br className="hidden md:block" />
+            <span className="text-luxury-gold italic">நினைவுகள்</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-luxury-muted text-lg tracking-wide font-light"
+            className="text-luxury-muted text-lg tracking-wide font-light uppercase"
           >
-            நாங்கள் பரிமாறிய நினைவுகள்
+            MOMENTS WE'VE SERVED
           </motion.p>
         </div>
 
@@ -131,9 +131,10 @@ const EventStories = () => {
             href={`https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent("Hi Sakthi Catering, I am planning a celebration and would like to talk.")}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-8 py-4 border border-luxury-gold text-luxury-gold text-sm tracking-widest hover:bg-luxury-gold hover:text-luxury-black transition-colors duration-300"
+            className="px-8 py-3 border border-luxury-gold text-luxury-gold text-[14px] md:text-base tracking-widest hover:bg-luxury-gold hover:text-luxury-black transition-colors duration-300 flex flex-col items-center justify-center"
           >
-            PLANNING YOUR CELEBRATION? LET'S TALK &rarr;
+            <span>உங்கள் நிகழ்வை திட்டமிடுகிறீர்களா? பேசுவோம் &rarr;</span>
+            <span className="text-[10px] uppercase opacity-80 mt-1">PLANNING YOUR CELEBRATION? LET'S TALK &rarr;</span>
           </a>
         </motion.div>
       </div>

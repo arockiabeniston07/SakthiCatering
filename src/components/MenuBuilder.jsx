@@ -82,7 +82,7 @@ const MenuBuilder = ({ selectedItems, toggleItem }) => {
       {/* Background Cinematic Layer */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="image\menuback.jpg" 
+          src="/image/h4.jpg" 
           alt="Top Down Menu Background" 
           loading="lazy"
           decoding="async"
@@ -98,12 +98,15 @@ const MenuBuilder = ({ selectedItems, toggleItem }) => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="font-serif text-4xl md:text-5xl text-luxury-cream mb-4 break-words leading-tight"
+            className="font-tamil text-3xl md:text-5xl text-luxury-cream mb-4 break-words leading-tight"
           >
-            BUILD YOUR<br />
-            <span className="text-luxury-gold italic">FEAST</span>
+            உங்கள் <span className="text-luxury-gold italic">Menu</span>
           </motion.h2>
-          <p className="text-luxury-muted">Create a menu that fits your celebration.</p>
+          <p className="text-luxury-muted text-lg md:text-xl uppercase tracking-widest font-serif mb-6">BUILD YOUR FEAST</p>
+          <div className="text-luxury-muted flex flex-col gap-1 items-center">
+            <span className="font-tamil text-base md:text-lg">உங்கள் கொண்டாட்டத்திற்கு ஏற்ற மெனுவை உருவாக்கவும்.</span>
+            <span className="text-[10px] md:text-xs uppercase opacity-70 tracking-widest">Create a menu that fits your celebration.</span>
+          </div>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-24">
@@ -114,9 +117,9 @@ const MenuBuilder = ({ selectedItems, toggleItem }) => {
             {/* Step Progress Indicator */}
             <div className="flex items-center justify-between sm:justify-start mb-12 border-b border-luxury-gray/30 pb-6">
               {[
-                { id: 1, label: 'MENU' },
-                { id: 2, label: 'CATEGORY' },
-                { id: 3, label: 'FOOD' }
+                { id: 1, label: 'MENU', tamil: 'மெனு' },
+                { id: 2, label: 'CATEGORY', tamil: 'வகை' },
+                { id: 3, label: 'FOOD', tamil: 'உணவு' }
               ].map((s, i) => (
                 <div key={s.id} className="flex items-center">
                   <div className={`flex items-center justify-center w-8 h-8 rounded-full border text-xs mr-2 sm:mr-3 ${
@@ -128,10 +131,11 @@ const MenuBuilder = ({ selectedItems, toggleItem }) => {
                   }`}>
                     {step > s.id ? '✓' : `0${s.id}`}
                   </div>
-                  <span className={`text-[10px] sm:text-xs tracking-widest ${
+                  <span className={`flex flex-col gap-0.5 text-[10px] sm:text-xs tracking-widest ${
                     step >= s.id ? 'text-luxury-cream' : 'text-luxury-muted'
                   }`}>
-                    {s.label}
+                    <span className="font-tamil">{s.tamil}</span>
+                    <span className="opacity-70 text-[8px] sm:text-[9px] uppercase">{s.label}</span>
                   </span>
                   {i < 2 && (
                     <div className={`w-4 sm:w-12 md:w-24 h-px mx-2 sm:mx-4 md:mx-8 ${
@@ -151,7 +155,10 @@ const MenuBuilder = ({ selectedItems, toggleItem }) => {
                   exit={{ opacity: 0, x: 20 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <h3 className="text-sm text-luxury-gold tracking-widest mb-8">STEP 01: CHOOSE YOUR SERVICE TIME</h3>
+                  <h3 className="flex flex-col gap-1 text-sm text-luxury-gold tracking-widest mb-8">
+                    <span className="font-tamil">படி 01: நேரத்தைத் தேர்ந்தெடுக்கவும்</span>
+                    <span className="text-[10px] uppercase opacity-70">STEP 01: CHOOSE YOUR SERVICE TIME</span>
+                  </h3>
                   <div className="flex flex-col sm:flex-row gap-6 overflow-hidden">
                     {serviceTimes.map((time, idx) => (
                       <button
@@ -164,8 +171,11 @@ const MenuBuilder = ({ selectedItems, toggleItem }) => {
                         }`}
                       >
                         <span className="text-luxury-muted text-xs mb-3">0{idx + 1}</span>
-                        <span className={`font-serif text-3xl tracking-widest ${selectedServiceTime === time.id ? 'text-luxury-gold' : 'text-luxury-cream'}`}>
+                        <span className={`font-tamil text-2xl tracking-wide ${selectedServiceTime === time.id ? 'text-luxury-gold' : 'text-luxury-cream'}`}>
                           {time.label}
+                        </span>
+                        <span className={`text-[10px] uppercase opacity-70 tracking-widest mt-1 ${selectedServiceTime === time.id ? 'text-luxury-gold' : 'text-luxury-cream'}`}>
+                          {time.subLabel}
                         </span>
                       </button>
                     ))}
@@ -182,10 +192,13 @@ const MenuBuilder = ({ selectedItems, toggleItem }) => {
                   transition={{ duration: 0.3 }}
                 >
                   <div className="flex justify-between items-center mb-8">
-                    <h3 className="text-sm text-luxury-gold tracking-widest">STEP 02: CHOOSE A CATEGORY</h3>
+                    <h3 className="flex flex-col gap-1 text-sm text-luxury-gold tracking-widest">
+                      <span className="font-tamil">படி 02: வகையைத் தேர்ந்தெடுக்கவும்</span>
+                      <span className="text-[10px] uppercase opacity-70">STEP 02: CHOOSE A CATEGORY</span>
+                    </h3>
                     <button 
                       onClick={() => setStep(1)}
-                      className="text-xs text-luxury-muted tracking-widest hover:text-luxury-cream transition-colors flex items-center gap-2"
+                      className="text-xs text-luxury-muted tracking-widest hover:text-luxury-cream transition-colors flex items-center gap-2 uppercase"
                     >
                       &larr; BACK
                     </button>
@@ -203,14 +216,22 @@ const MenuBuilder = ({ selectedItems, toggleItem }) => {
                               : 'border-luxury-gray bg-luxury-black hover:border-luxury-muted hover:bg-luxury-gray/5'
                           }`}
                         >
-                          <span className={`text-base mb-4 leading-relaxed ${selectedCategory === category.id ? 'text-luxury-gold' : 'text-luxury-cream'}`}>
-                            {category.name}
-                          </span>
+                          <div className={`flex flex-col mb-4 ${selectedCategory === category.id ? 'text-luxury-gold' : 'text-luxury-cream'}`}>
+                            <span className="text-base font-tamil leading-relaxed">
+                              {category.name.split(' : ')[0] || category.name}
+                            </span>
+                            {category.name.includes(' : ') && (
+                              <span className="text-[10px] opacity-70 uppercase tracking-widest mt-1">
+                                {category.name.split(' : ')[1]}
+                              </span>
+                            )}
+                          </div>
                           <div className="flex justify-between items-center mt-auto w-full">
-                            <span className="text-xs text-luxury-muted">{category.items.length} ITEMS</span>
+                            <span className="text-xs text-luxury-muted font-tamil flex flex-col gap-0.5"><span>{category.items.length} உணவுகள்</span> <span className="text-[9px] opacity-70 font-sans tracking-widest">{category.items.length} ITEMS</span></span>
                             {selectedCount > 0 && (
-                              <span className="text-xs text-luxury-black bg-luxury-gold px-2 py-0.5 rounded-sm font-medium">
-                                {selectedCount} SELECTED
+                              <span className="text-xs text-luxury-black bg-luxury-gold px-2 py-1 rounded-sm font-medium font-tamil flex flex-col items-center gap-0.5 leading-none">
+                                <span>{selectedCount} தேர்ந்தெடுக்கப்பட்டது</span>
+                                <span className="text-[8px] opacity-80 font-sans tracking-widest uppercase">{selectedCount} SELECTED</span>
                               </span>
                             )}
                           </div>
@@ -230,17 +251,27 @@ const MenuBuilder = ({ selectedItems, toggleItem }) => {
                   transition={{ duration: 0.3 }}
                 >
                   <div className="flex justify-between items-center mb-8">
-                    <h3 className="text-sm text-luxury-gold tracking-widest">STEP 03: SELECT YOUR ITEMS</h3>
+                    <h3 className="flex flex-col gap-1 text-sm text-luxury-gold tracking-widest">
+                      <span className="font-tamil">படி 03: உணவுகளைத் தேர்ந்தெடுக்கவும்</span>
+                      <span className="text-[10px] uppercase opacity-70">STEP 03: SELECT YOUR ITEMS</span>
+                    </h3>
                     <button 
                       onClick={() => setStep(2)}
-                      className="text-xs text-luxury-muted tracking-widest hover:text-luxury-cream transition-colors flex items-center gap-2"
+                      className="text-xs text-luxury-muted tracking-widest hover:text-luxury-cream transition-colors flex items-center gap-2 uppercase"
                     >
                       &larr; BACK
                     </button>
                   </div>
                   <div className="mb-4">
-                    <h4 className="text-2xl font-serif text-luxury-cream mb-6 pb-4 border-b border-luxury-gray">
-                      {activeCategories.find(c => c.id === selectedCategory)?.name}
+                    <h4 className="flex flex-col gap-1 mb-6 pb-4 border-b border-luxury-gray">
+                      <span className="text-2xl font-tamil text-luxury-cream">
+                        {activeCategories.find(c => c.id === selectedCategory)?.name.split(' : ')[0] || activeCategories.find(c => c.id === selectedCategory)?.name}
+                      </span>
+                      {activeCategories.find(c => c.id === selectedCategory)?.name.includes(' : ') && (
+                        <span className="text-sm font-serif text-luxury-muted uppercase tracking-widest">
+                          {activeCategories.find(c => c.id === selectedCategory)?.name.split(' : ')[1]}
+                        </span>
+                      )}
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       {activeItems.map(item => {
@@ -282,27 +313,41 @@ const MenuBuilder = ({ selectedItems, toggleItem }) => {
           {/* Sticky Sidebar */}
           <div className="w-full lg:w-96 flex-shrink-0">
             <div className="sticky top-32 p-8 border border-luxury-gray bg-luxury-gray/10 flex flex-col max-h-[80vh]">
-              <h4 className="text-sm text-luxury-gold tracking-widest mb-6">YOUR FEAST</h4>
+              <h4 className="flex flex-col gap-1 text-sm text-luxury-gold tracking-widest mb-6">
+                <span className="font-tamil text-base">உங்கள் Menu</span>
+                <span className="text-[10px] uppercase opacity-70">YOUR FEAST</span>
+              </h4>
               
               <div className="flex-1 overflow-y-auto pr-2 custom-scrollbar mb-8">
                 {selectedItems.length === 0 ? (
                   <div className="py-8">
-                    <p className="text-luxury-cream text-lg mb-2">0 ITEMS SELECTED</p>
-                    <p className="text-luxury-muted text-sm italic">No items selected yet.</p>
+                    <p className="text-luxury-cream font-tamil text-lg mb-2">0 உணவுகள் தேர்ந்தெடுக்கப்பட்டன</p>
+                    <p className="text-luxury-muted text-[10px] uppercase tracking-widest mb-3 opacity-70">0 ITEMS SELECTED</p>
+                    <p className="text-luxury-muted font-tamil text-sm italic">இன்னும் உணவுகள் தேர்ந்தெடுக்கப்படவில்லை.</p>
+                    <p className="text-luxury-muted text-[10px] uppercase tracking-widest mt-1 opacity-70 italic">No items selected yet.</p>
                   </div>
                 ) : (
                   <div>
-                    <p className="text-luxury-cream text-lg mb-6 border-b border-luxury-gray pb-4">
+                    <p className="text-luxury-cream font-tamil text-lg mb-1">
+                      {selectedItems.length} {selectedItems.length === 1 ? 'உணவு' : 'உணவுகள்'} தேர்ந்தெடுக்கப்பட்டன
+                    </p>
+                    <p className="text-luxury-muted text-[10px] uppercase tracking-widest mb-6 border-b border-luxury-gray pb-4 opacity-70">
                       {selectedItems.length} {selectedItems.length === 1 ? 'ITEM' : 'ITEMS'} SELECTED
                     </p>
                     
                     {Object.entries(groupedItems).map(([timeKey, timeData]) => (
                       <div key={timeKey} className="mb-6 last:mb-0">
-                        <h5 className="text-xs text-luxury-gold tracking-widest mb-3">{timeData.label}</h5>
+                        <h5 className="flex flex-col gap-0.5 text-luxury-gold tracking-widest mb-3">
+                          <span className="font-tamil text-sm">{timeData.label}</span>
+                          <span className="text-[9px] uppercase opacity-70">{timeData.subLabel || timeKey}</span>
+                        </h5>
                         
                         {Object.entries(timeData.categories).map(([catId, catData]) => (
                           <div key={catId} className="mb-4 last:mb-0 ml-2">
-                            <h6 className="text-sm text-luxury-muted mb-2">{catData.name}</h6>
+                            <h6 className="text-sm text-luxury-muted mb-2 flex flex-col gap-0.5">
+                              <span className="font-tamil text-base">{catData.name.split(' : ')[0] || catData.name}</span>
+                              {catData.name.includes(' : ') && <span className="text-[9px] uppercase tracking-widest opacity-70">{catData.name.split(' : ')[1]}</span>}
+                            </h6>
                             <ul className="flex flex-col gap-2 ml-2">
                               {catData.items.map(item => (
                                 <li key={item.id} className="text-sm text-luxury-cream flex justify-between items-start group">
@@ -332,13 +377,14 @@ const MenuBuilder = ({ selectedItems, toggleItem }) => {
                 <button
                   onClick={handleRequestMenu}
                   disabled={selectedItems.length === 0}
-                  className={`w-full py-4 text-sm tracking-widest transition-colors duration-300 ${
+                  className={`w-full py-3 flex flex-col items-center justify-center gap-1 transition-colors duration-300 ${
                     selectedItems.length > 0 
                       ? 'bg-luxury-gold text-luxury-black hover:bg-luxury-cream' 
                       : 'bg-luxury-gray text-luxury-muted cursor-not-allowed opacity-50'
                   }`}
                 >
-                  REQUEST THIS MENU &rarr;
+                  <span className="font-tamil text-[14px]">இந்த மெனுவை விசாரிக்கவும் &rarr;</span>
+                  <span className="text-[9px] uppercase tracking-widest opacity-80">REQUEST THIS MENU &rarr;</span>
                 </button>
               </div>
             </div>

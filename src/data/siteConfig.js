@@ -11,10 +11,10 @@ export const siteConfig = {
     googleMaps: "https://maps.google.com"
   },
   stats: [
-    { value: 50000, label: "GUESTS SERVED", suffix: "+" },
-    { value: 500, label: "EVENTS", suffix: "+" },
-    { value: 15, label: "YEARS OF CRAFT", suffix: "+" },
-    { value: 100, label: "MADE WITH CARE", suffix: "%" }
+    { value: 50000, label: "பரிமாறப்பட்ட விருந்தினர்கள்", subLabel: "GUESTS SERVED", suffix: "+" },
+    { value: 500, label: "நிகழ்வுகள்", subLabel: "EVENTS", suffix: "+" },
+    { value: 15, label: "ஆண்டுகளின் அனுபவம்", subLabel: "YEARS OF CRAFT", suffix: "+" },
+    { value: 100, label: "கவனிப்புடன் தயாரிப்பு", subLabel: "MADE WITH CARE", suffix: "%" }
   ],
   hero: {
     heading: "A TABLE WORTH REMEMBERING.",

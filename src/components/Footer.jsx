@@ -19,12 +19,12 @@ const InstagramIcon = ({ size = 18 }) => (
 );
 
 const navLinks = [
-  { label: 'HOME', href: '#home' },
-  { label: 'ABOUT', href: '#about' },
-  { label: 'MENU', href: '#menu' },
-  { label: 'SERVICES', href: '#services' },
-  { label: 'GALLERY', href: '#gallery' },
-  { label: 'CONTACT', href: '#contact' }
+  { label: 'HOME', tamilLabel: 'முகப்பு', href: '#home' },
+  { label: 'ABOUT', tamilLabel: 'எங்களைப் பற்றி', href: '#about' },
+  { label: 'MENU', tamilLabel: 'மெனு', href: '#menu' },
+  { label: 'SERVICES', tamilLabel: 'சேவைகள்', href: '#services' },
+  { label: 'GALLERY', tamilLabel: 'நினைவுகள்', href: '#gallery' },
+  { label: 'CONTACT', tamilLabel: 'தொடர்புக்கு', href: '#contact' }
 ];
 
 const Footer = () => {
@@ -63,23 +63,20 @@ const Footer = () => {
           {/* COLUMN 1 — BRAND */}
           <motion.div variants={itemVariants} className="flex flex-col items-start pr-0 lg:pr-8">
             <BrandLogo align="left" variant="footer" className="mb-6" />
-            <p className="text-luxury-muted text-sm font-light italic mb-2 leading-relaxed max-w-[280px]">
+            <p className="text-luxury-muted/70 text-xs font-light italic leading-relaxed max-w-[280px]">
               "Exceptional catering for celebrations worth remembering."
-            </p>
-            <p className="text-luxury-muted/70 text-sm font-light leading-relaxed max-w-[280px]">
-              "நினைவில் நிற்கும் விருந்துகளுக்கான சிறப்பான கேட்டரிங்."
             </p>
           </motion.div>
 
           {/* COLUMN 2 — NAVIGATION */}
           <motion.div variants={itemVariants} className="flex flex-col gap-4">
-            <h3 className="text-luxury-gold text-xs tracking-widest mb-2 border-b border-luxury-gray/30 pb-2 inline-block w-max">NAVIGATION</h3>
+            <h3 className="text-luxury-gold tracking-widest mb-2 border-b border-luxury-gray/30 pb-2 inline-block w-max uppercase text-xs">NAVIGATION</h3>
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className="text-sm text-luxury-cream hover:text-luxury-gold transition-colors w-max tracking-wider"
+                className="text-xs text-luxury-cream hover:text-luxury-gold transition-colors w-max tracking-widest uppercase"
               >
                 {link.label}
               </a>
@@ -88,28 +85,28 @@ const Footer = () => {
 
           {/* COLUMN 3 — CONNECT WITH US */}
           <motion.div variants={itemVariants} className="flex flex-col gap-4">
-            <h3 className="text-luxury-gold text-xs tracking-widest mb-2 border-b border-luxury-gray/30 pb-2 inline-block w-max">CONNECT WITH US</h3>
-            <a href={`https://wa.me/${siteConfig.whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm text-luxury-cream hover:text-luxury-gold transition-colors w-max">
+            <h3 className="text-luxury-gold tracking-widest mb-2 border-b border-luxury-gray/30 pb-2 inline-block w-max uppercase text-xs">CONNECT WITH US</h3>
+            <a href={`https://wa.me/${siteConfig.whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-xs text-luxury-cream hover:text-luxury-gold transition-colors w-max tracking-widest uppercase">
               <MessageCircle size={18} className="shrink-0" /> <span>WhatsApp</span>
             </a>
-            <a href={`tel:${siteConfig.phone.replace(/\s/g, '')}`} className="flex items-center gap-3 text-sm text-luxury-cream hover:text-luxury-gold transition-colors w-max">
+            <a href={`tel:${siteConfig.phone.replace(/\s/g, '')}`} className="flex items-center gap-3 text-xs text-luxury-cream hover:text-luxury-gold transition-colors w-max tracking-widest uppercase">
               <Phone size={18} className="shrink-0" /> <span>Call Us</span>
             </a>
-            <a href={`mailto:${siteConfig.email}`} className="flex items-center gap-3 text-sm text-luxury-cream hover:text-luxury-gold transition-colors w-max">
+            <a href={`mailto:${siteConfig.email}`} className="flex items-center gap-3 text-xs text-luxury-cream hover:text-luxury-gold transition-colors w-max tracking-widest uppercase">
               <Mail size={18} className="shrink-0" /> <span>Email</span>
             </a>
             {siteConfig.socialLinks.instagram && (
-              <a href={siteConfig.socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm text-luxury-cream hover:text-luxury-gold transition-colors w-max">
+              <a href={siteConfig.socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-xs text-luxury-cream hover:text-luxury-gold transition-colors w-max tracking-widest uppercase">
                 <InstagramIcon size={18} /> <span>Instagram</span>
               </a>
             )}
             {siteConfig.socialLinks.facebook && (
-              <a href={siteConfig.socialLinks.facebook} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm text-luxury-cream hover:text-luxury-gold transition-colors w-max">
+              <a href={siteConfig.socialLinks.facebook} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-xs text-luxury-cream hover:text-luxury-gold transition-colors w-max tracking-widest uppercase">
                 <FacebookIcon size={18} /> <span>Facebook</span>
               </a>
             )}
             {siteConfig.socialLinks.googleMaps && (
-              <a href={siteConfig.socialLinks.googleMaps} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-sm text-luxury-cream hover:text-luxury-gold transition-colors w-max">
+              <a href={siteConfig.socialLinks.googleMaps} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-xs text-luxury-cream hover:text-luxury-gold transition-colors w-max tracking-widest uppercase">
                 <MapPin size={18} className="shrink-0" /> <span>Location</span>
               </a>
             )}
@@ -117,23 +114,23 @@ const Footer = () => {
 
           {/* COLUMN 4 — CONTACT INFORMATION */}
           <motion.div variants={itemVariants} className="flex flex-col gap-4">
-            <h3 className="text-luxury-gold text-xs tracking-widest mb-2 border-b border-luxury-gray/30 pb-2 inline-block w-max">CONTACT INFORMATION</h3>
+            <h3 className="text-luxury-gold tracking-widest mb-2 border-b border-luxury-gray/30 pb-2 inline-block w-max uppercase text-xs">CONTACT INFORMATION</h3>
             
             <div className="mb-1">
-              <p className="text-luxury-muted text-[10px] tracking-widest mb-1 uppercase">Phone</p>
+              <p className="text-luxury-muted tracking-widest mb-1 uppercase text-[10px]">Phone</p>
               <p className="text-luxury-cream text-sm">{siteConfig.phone}</p>
             </div>
             
             <div className="mb-4">
-              <p className="text-luxury-muted text-[10px] tracking-widest mb-1 uppercase">WhatsApp</p>
+              <p className="text-luxury-muted tracking-widest mb-1 uppercase text-[10px]">WhatsApp</p>
               <p className="text-luxury-cream text-sm">{siteConfig.phone}</p>
             </div>
             
             <div className="flex flex-row gap-3">
-              <a href={`tel:${siteConfig.phone.replace(/\s/g, '')}`} className="px-5 py-2 border border-luxury-gold text-luxury-gold text-[10px] sm:text-xs tracking-widest hover:bg-luxury-gold hover:text-luxury-black transition-colors text-center w-full max-w-[120px]">
+              <a href={`tel:${siteConfig.phone.replace(/\s/g, '')}`} className="px-5 py-2 border border-luxury-gold text-luxury-gold tracking-widest hover:bg-luxury-gold hover:text-luxury-black transition-colors text-center w-full max-w-[120px] flex items-center justify-center rounded-sm uppercase text-[10px]">
                 CALL
               </a>
-              <a href={`https://wa.me/${siteConfig.whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="px-5 py-2 bg-[#25D366] text-white font-medium text-[10px] sm:text-xs tracking-widest hover:bg-[#1EBE5A] transition-colors text-center w-full max-w-[120px]">
+              <a href={`https://wa.me/${siteConfig.whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="px-5 py-2 bg-[#25D366] text-white font-medium tracking-widest hover:bg-[#1EBE5A] transition-colors text-center w-full max-w-[120px] flex items-center justify-center rounded-sm uppercase text-[10px]">
                 WHATSAPP
               </a>
             </div>
@@ -148,8 +145,8 @@ const Footer = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="mt-16 md:mt-20 pt-6 border-t border-luxury-gray/30 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] sm:text-xs tracking-wider text-luxury-muted/70"
         >
-          <p>&copy; {new Date().getFullYear()} Sakthi Catering. All rights reserved.</p>
-          <p>Designed for Excellence.</p>
+          <p className="text-center md:text-left uppercase">&copy; {new Date().getFullYear()} Sakthi Catering. All rights reserved.</p>
+          <p className="text-center md:text-right uppercase">Designed for Excellence.</p>
         </motion.div>
       </div>
     </footer>

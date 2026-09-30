@@ -5,12 +5,12 @@ import { siteConfig } from '../data/siteConfig';
 import BrandLogo from './BrandLogo';
 
 const navLinks = [
-  { label: 'HOME', href: '#home' },
-  { label: 'ABOUT', href: '#about' },
-  { label: 'MENU', href: '#menu' },
-  { label: 'SERVICES', href: '#services' },
-  { label: 'GALLERY', href: '#gallery' },
-  { label: 'CONTACT', href: '#contact' }
+  { label: 'HOME', tamilLabel: 'முகப்பு', href: '#home' },
+  { label: 'ABOUT', tamilLabel: 'எங்களைப் பற்றி', href: '#about' },
+  { label: 'MENU', tamilLabel: 'மெனு', href: '#menu' },
+  { label: 'SERVICES', tamilLabel: 'சேவைகள்', href: '#services' },
+  { label: 'GALLERY', tamilLabel: 'நினைவுகள்', href: '#gallery' },
+  { label: 'CONTACT', tamilLabel: 'தொடர்புக்கு', href: '#contact' }
 ];
 
 const Navbar = () => {
@@ -84,7 +84,7 @@ const Navbar = () => {
                 key={link.label}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className={`text-sm tracking-widest transition-colors duration-300 relative ${
+                className={`transition-colors duration-300 relative text-xs tracking-widest uppercase ${
                   activeSection === link.href.substring(1) ? 'text-luxury-gold' : 'text-luxury-cream/70 hover:text-luxury-cream'
                 }`}
               >
@@ -96,7 +96,7 @@ const Navbar = () => {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Enquire on WhatsApp"
-              className="px-6 py-2 ml-4 bg-luxury-gold text-luxury-black text-xs tracking-widest hover:bg-luxury-cream transition-colors duration-300"
+              className="px-6 py-2.5 ml-4 bg-luxury-gold text-luxury-black text-xs tracking-widest hover:bg-luxury-cream transition-colors duration-300 flex items-center justify-center rounded-sm uppercase"
             >
               ENQUIRE NOW
             </a>
@@ -137,7 +137,7 @@ const Navbar = () => {
                   key={link.label}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className={`font-serif text-3xl md:text-5xl tracking-widest transition-colors duration-300 ${
+                  className={`transition-colors duration-300 font-serif text-2xl md:text-3xl tracking-widest uppercase ${
                     activeSection === link.href.substring(1) ? 'text-luxury-gold' : 'text-luxury-cream hover:text-luxury-gold'
                   }`}
                 >
@@ -149,7 +149,7 @@ const Navbar = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Enquire on WhatsApp"
-                className="mt-4 px-8 py-4 bg-luxury-gold text-luxury-black text-sm tracking-widest hover:bg-luxury-cream transition-colors duration-300"
+                className="mt-4 px-8 py-3 bg-luxury-gold text-luxury-black text-sm tracking-widest hover:bg-luxury-cream transition-colors duration-300 flex items-center justify-center rounded-sm uppercase"
               >
                 ENQUIRE NOW
               </a>

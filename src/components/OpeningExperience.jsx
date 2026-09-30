@@ -55,14 +55,15 @@ const OpeningExperience = ({ onComplete }) => {
             </motion.div>
 
             {/* Main Loading Text */}
-            <motion.p
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1.2, delay: 1 }}
-              className="text-luxury-gold text-xs tracking-[0.3em] uppercase font-light mb-16 text-center"
+              className="text-luxury-gold text-center mb-16 flex flex-col gap-1.5"
             >
-              Curating your experience
-            </motion.p>
+              <span className="font-tamil text-sm md:text-base tracking-widest">உங்கள் அனுபவம் தயாராகிறது</span>
+              <span className="text-[10px] tracking-[0.3em] uppercase font-light opacity-70">Curating your experience</span>
+            </motion.div>
 
             {/* Elegant Gold Loading Indicator */}
             <motion.div 

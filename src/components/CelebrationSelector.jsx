@@ -5,44 +5,44 @@ import { siteConfig } from '../data/siteConfig';
 const celebrations = [
   {
     id: 'Wedding Catering',
-    title: 'WEDDING CATERING',
-    subtitle: 'திருமண விருந்து',
+    title: 'திருமண விருந்து',
+    subtitle: 'WEDDING CATERING',
     image: '/image/wedd.webp'
   },
   {
     id: 'Reception',
-    title: 'RECEPTION',
-    subtitle: 'வரவேற்பு',
+    title: 'வரவேற்பு',
+    subtitle: 'RECEPTION',
     image: '/image/re.webp'
   },
   {
     id: 'Engagement',
-    title: 'ENGAGEMENT',
-    subtitle: 'நிச்சயதார்த்தம்',
+    title: 'நிச்சயதார்த்தம்',
+    subtitle: 'ENGAGEMENT',
     image: '/image/eng.jpg'
   },
   {
     id: 'Birthday',
-    title: 'BIRTHDAY',
-    subtitle: 'பிறந்தநாள்',
+    title: 'பிறந்தநாள்',
+    subtitle: 'BIRTHDAY',
     image: '/image/birth.webp'
   },
   {
     id: 'Housewarming',
-    title: 'HOUSEWARMING',
-    subtitle: 'புதுமனை புகுவிழா',
+    title: 'புதுமனை புகுவிழா',
+    subtitle: 'HOUSEWARMING',
     image: '/image/house.jpg'
   },
   {
     id: 'Outdoor Catering',
-    title: 'OUTDOOR CATERING',
-    subtitle: 'வெளிப்புற விருந்து',
+    title: 'வெளிப்புற விருந்து',
+    subtitle: 'OUTDOOR CATERING',
     image: '/image/out.jpg'
   },
   {
     id: 'Live Food Counters',
-    title: 'LIVE FOOD COUNTERS',
-    subtitle: 'நேரடி உணவு கவுண்டர்கள்',
+    title: 'நேரடி உணவு கவுண்டர்கள்',
+    subtitle: 'LIVE FOOD COUNTERS',
     image: '/image/buffeyabout.jpg'
   }
 ];
@@ -68,7 +68,7 @@ const CelebrationSelector = () => {
       {/* Background Cinematic Layer */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="image\servicesback.jpg" 
+          src="/image/servicesback.jpg" 
           alt="Outdoor Catering Background" 
           loading="lazy"
           decoding="async"
@@ -85,17 +85,17 @@ const CelebrationSelector = () => {
           transition={{ duration: 0.8 }}
           className="font-serif text-4xl md:text-6xl text-luxury-cream mb-4"
         >
-          WHAT ARE YOU <br className="md:hidden"/>
-          <span className="text-luxury-gold italic">CELEBRATING?</span>
+          என்ன நிகழ்வை <br className="md:hidden"/>
+          <span className="text-luxury-gold italic">கொண்டாடுகிறீர்கள்?</span>
         </motion.h2>
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-luxury-muted text-lg font-light tracking-wide"
+          className="text-luxury-muted text-lg font-light tracking-wide uppercase"
         >
-          என்ன நிகழ்வை கொண்டாடுகிறீர்கள்?
+          WHAT ARE YOU CELEBRATING?
         </motion.p>
       </div>
 
@@ -148,7 +148,7 @@ const CelebrationSelector = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
-                    className={`mt-3 sm:mt-4 px-3 sm:px-4 py-1.5 sm:py-2 border text-[10px] sm:text-xs tracking-widest transition-all duration-300 ${
+                    className={`mt-3 sm:mt-4 px-3 sm:px-4 py-1.5 sm:py-2 border text-[10px] sm:text-[12px] tracking-widest uppercase transition-all duration-300 ${
                       isSelected 
                         ? 'border-luxury-gold text-luxury-gold hover:bg-luxury-gold hover:text-luxury-black' 
                         : 'border-luxury-muted text-luxury-cream opacity-80 hover:opacity-100 hover:border-luxury-cream hover:bg-luxury-cream hover:text-luxury-black'

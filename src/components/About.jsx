@@ -7,7 +7,7 @@ const About = () => {
       {/* Background Cinematic Layer */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="image\h1.avif" 
+          src="/image/h1.avif" 
           alt="Elegant Restaurant Background" 
           loading="lazy"
           decoding="async"
@@ -117,15 +117,17 @@ const About = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <p className="text-luxury-gold text-xs md:text-sm tracking-widest mb-4 uppercase">About Us</p>
+              <p className="text-luxury-gold text-xs md:text-sm tracking-widest mb-4">
+                எங்களைப் பற்றி <span className="text-[10px] uppercase opacity-80 block mt-1">About Us</span>
+              </p>
               
               <h2 className="font-serif text-[clamp(2rem,4vw,3.5rem)] text-luxury-cream mb-4 leading-tight">
-                WE CREATE MORE THAN MENUS.<br />
-                <span className="text-luxury-gold italic">WE CREATE TABLES PEOPLE REMEMBER.</span>
+                உணவை மட்டும் வழங்குவதில்லை.<br />
+                <span className="text-luxury-gold italic">நினைவில் நிற்கும் விருந்தை உருவாக்குகிறோம்.</span>
               </h2>
               
-              <p className="text-luxury-muted text-base md:text-lg tracking-wide font-light mb-12">
-                உணவை மட்டும் வழங்குவதில்லை. நினைவில் நிற்கும் விருந்தை உருவாக்குகிறோம்.
+              <p className="text-luxury-muted text-base md:text-lg tracking-wide font-light mb-12 uppercase">
+                WE CREATE MORE THAN MENUS. WE CREATE TABLES PEOPLE REMEMBER.
               </p>
 
               <div className="space-y-10 text-luxury-muted font-light leading-relaxed">
@@ -135,8 +137,11 @@ const About = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                  <h3 className="text-luxury-cream text-sm md:text-base tracking-widest mb-3 uppercase">Our Story</h3>
-                  <p className="text-sm md:text-base">Every celebration deserves a table worth remembering. We bring together thoughtful menus, traditional flavours and elegant presentation to make every gathering feel special.</p>
+                  <h3 className="text-luxury-cream text-sm md:text-base tracking-widest mb-3">
+                    எங்கள் கதை <span className="text-[10px] uppercase opacity-80 block mt-1">Our Story</span>
+                  </h3>
+                  <p className="text-sm md:text-base mb-2">ஒவ்வொரு கொண்டாட்டமும் நினைவில் கொள்ளத்தக்க விருந்திற்கு தகுதியானது. ஒவ்வொரு கூடுகையையும் சிறப்பானதாக மாற்றுவதற்கு கவனமாக தேர்ந்தெடுக்கப்பட்ட மெனுக்கள், பாரம்பரிய சுவைகள் மற்றும் நேர்த்தியான பரிமாற்றம் ஆகியவற்றை நாங்கள் கொண்டு வருகிறோம்.</p>
+                  <p className="text-xs md:text-sm opacity-80">Every celebration deserves a table worth remembering. We bring together thoughtful menus, traditional flavours and elegant presentation to make every gathering feel special.</p>
                 </motion.div>
                 
                 <motion.div 
@@ -145,8 +150,11 @@ const About = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.3 }}
                 >
-                  <h3 className="text-luxury-cream text-sm md:text-base tracking-widest mb-3 uppercase">Our Speciality</h3>
-                  <p className="text-sm md:text-base">We blend timeless recipes with modern presentation, creating catering experiences that feel familiar, refined and unforgettable.</p>
+                  <h3 className="text-luxury-cream text-sm md:text-base tracking-widest mb-3">
+                    எங்கள் சிறப்பு <span className="text-[10px] uppercase opacity-80 block mt-1">Our Speciality</span>
+                  </h3>
+                  <p className="text-sm md:text-base mb-2">நாங்கள் காலத்தால் அழியாத சமையல் குறிப்புகளை நவீன விளக்கக்காட்சியுடன் கலக்கிறோம், பழக்கமான, சிறப்பான மற்றும் மறக்க முடியாத உணவு அனுபவங்களை உருவாக்குகிறோம்.</p>
+                  <p className="text-xs md:text-sm opacity-80">We blend timeless recipes with modern presentation, creating catering experiences that feel familiar, refined and unforgettable.</p>
                 </motion.div>
                 
                 <motion.div 
@@ -155,8 +163,11 @@ const About = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: 0.4 }}
                 >
-                  <h3 className="text-luxury-cream text-sm md:text-base tracking-widest mb-3 uppercase">Our Promise</h3>
-                  <p className="text-sm md:text-base">From the first dish to the final plate, we focus on quality ingredients, beautiful presentation and dependable service.</p>
+                  <h3 className="text-luxury-cream text-sm md:text-base tracking-widest mb-3">
+                    எங்கள் வாக்குறுதி <span className="text-[10px] uppercase opacity-80 block mt-1">Our Promise</span>
+                  </h3>
+                  <p className="text-sm md:text-base mb-2">முதல் உணவு முதல் இறுதி தட்டு வரை, நாங்கள் தரமான பொருட்கள், அழகான பரிமாற்றம் மற்றும் நம்பகமான சேவை ஆகியவற்றில் கவனம் செலுத்துகிறோம்.</p>
+                  <p className="text-xs md:text-sm opacity-80">From the first dish to the final plate, we focus on quality ingredients, beautiful presentation and dependable service.</p>
                 </motion.div>
               </div>
             </motion.div>
