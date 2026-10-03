@@ -34,26 +34,26 @@ const Contact = ({ selectedMenuItems, removeMenuItem }) => {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20 text-center max-w-4xl mx-auto">
-          <div className="p-8 border border-luxury-muted/20 bg-luxury-black/30 flex flex-col items-center">
+          <div className="px-4 py-8 sm:p-8 border border-luxury-muted/20 bg-luxury-black/30 flex flex-col items-center">
             <h3 className="text-luxury-gold text-sm tracking-widest mb-4 uppercase">PHONE</h3>
             <p className="text-luxury-cream font-light mb-6">{siteConfig.phone}</p>
             <a href={`tel:${siteConfig.phone.replace(/\s/g, '')}`} className="mt-auto px-6 py-2 border border-luxury-gold text-luxury-gold text-[10px] uppercase tracking-widest hover:bg-luxury-gold hover:text-luxury-black transition-colors w-full sm:w-auto flex items-center justify-center">
               CALL US
             </a>
           </div>
-          <div className="p-8 border border-luxury-muted/20 bg-luxury-black/30 flex flex-col items-center">
+          <div className="px-4 py-8 sm:p-8 border border-luxury-muted/20 bg-luxury-black/30 flex flex-col items-center">
             <h3 className="text-luxury-gold text-sm tracking-widest mb-4 uppercase">WHATSAPP</h3>
             <p className="text-luxury-cream font-light mb-6">{siteConfig.phone}</p>
-            <a href={`https://wa.me/${siteConfig.whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="mt-auto px-6 py-2 bg-luxury-gold text-luxury-black text-[10px] uppercase tracking-widest hover:bg-luxury-cream transition-colors w-full sm:w-auto flex items-center justify-center">
+            <a href={`https://wa.me/${siteConfig.whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="mt-auto px-6 py-2 border border-luxury-gold text-luxury-gold text-[10px] uppercase tracking-widest hover:bg-luxury-gold hover:text-luxury-black transition-colors w-full sm:w-auto flex items-center justify-center">
               WHATSAPP US
             </a>
           </div>
-          <div className="p-8 border border-luxury-muted/20 bg-luxury-black/30 flex flex-col items-center">
+          <div className="px-2 py-8 sm:px-4 sm:py-8 border border-luxury-muted/20 bg-luxury-black/30 flex flex-col items-center">
             <h3 className="text-luxury-gold text-sm tracking-widest mb-4 uppercase">EMAIL</h3>
-            <p className="text-luxury-cream font-light mb-6 text-[clamp(12px,3.5vw,16px)] tracking-tight">
-              {siteConfig.email.split('@')[0]}@<wbr/>{siteConfig.email.split('@')[1]}
+            <p className="text-luxury-cream font-light mb-6 text-[clamp(11px,1.2vw,15px)] tracking-tight whitespace-normal md:whitespace-nowrap">
+              {siteConfig.email}
             </p>
-            <a href={`mailto:${siteConfig.email}`} className="mt-auto px-6 py-2 border border-luxury-muted text-luxury-cream text-[10px] uppercase tracking-widest hover:border-luxury-cream hover:text-luxury-black hover:bg-luxury-cream transition-colors w-full sm:w-auto flex items-center justify-center">
+            <a href={`mailto:${siteConfig.email}`} className="mt-auto px-6 py-2 border border-luxury-gold text-luxury-gold text-[10px] uppercase tracking-widest hover:bg-luxury-gold hover:text-luxury-black transition-colors w-full sm:w-auto flex items-center justify-center">
               EMAIL US
             </a>
           </div>

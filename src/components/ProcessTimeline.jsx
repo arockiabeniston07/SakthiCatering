@@ -1,46 +1,67 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const steps = [
-  { 
-    id: '01', 
-    title: 'எங்களிடம் கூறுங்கள்', subtitle: 'TELL US', 
-    desc: 'உங்கள் நிகழ்வின் விவரங்கள், எதிர்பார்ப்புகள் மற்றும் விருப்பங்களை பகிரவும்.', subDesc: 'Share your event details, vision, and preferences.' 
-  },
-  { 
-    id: '02', 
-    title: 'நாங்கள் திட்டமிடுகிறோம்', subtitle: 'WE PLAN', 
-    desc: 'நாங்கள் மெனுவை உருவாக்குகிறோம், அளவுகளை தீர்மானிக்கிறோம் மற்றும் சேவையை ஏற்பாடு செய்கிறோம்.', subDesc: 'We shape the menu, determine quantities, and organize service.' 
-  },
-  { 
-    id: '03', 
-    title: 'நாங்கள் தயாரிக்கிறோம்', subtitle: 'WE PREPARE', 
-    desc: 'புதிய பொருட்களை பெற்று கவனமாக சமையல் தயாரிப்பு செய்கிறோம்.', subDesc: 'Sourcing fresh ingredients and careful culinary preparation.' 
-  },
-  { 
-    id: '04', 
-    title: 'நாங்கள் பரிமாறுகிறோம்', subtitle: 'WE SERVE', 
-    desc: 'உங்கள் இடத்தில் குறைபாடற்ற, தொழில்முறை சேவை வழங்குகிறோம்.', subDesc: 'Flawless, professional service at your venue.' 
-  },
-  { 
-    id: '05', 
-    title: 'நீங்கள் கொண்டாடுங்கள்', subtitle: 'YOU CELEBRATE', 
-    desc: 'நீங்கள் தருணத்தை மகிழ்ந்து கொண்டாடுங்கள், மற்றவற்றை நாங்கள் கையாளுகிறோம்.', subDesc: 'You enjoy the moment, we handle the rest.' 
-  },
+  { id: '01', title: 'TELL US', video: '/image/hero.mp4' },
+  { id: '02', title: 'WE PLAN', video: '/image/hero.mp4' },
+  { id: '03', title: 'WE PREPARE', video: '/image/hero.mp4' },
+  { id: '04', title: 'WE SERVE', video: '/image/hero.mp4' },
+  { id: '05', title: 'YOU CELEBRATE', video: '/image/hero.mp4' },
 ];
 
 const ProcessTimeline = () => {
+  const [activeStep, setActiveStep] = useState(null);
+  
+  const handleMouseEnter = (id) => {
+    if (window.matchMedia('(hover: hover)').matches) {
+      setActiveStep(id);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (window.matchMedia('(hover: hover)').matches) {
+      setActiveStep(null);
+    }
+  };
+
+  const handleClick = (id) => {
+    if (!window.matchMedia('(hover: hover)').matches) {
+      setActiveStep(prev => prev === id ? null : id);
+    }
+  };
+
   return (
-    <section className="relative overflow-hidden py-24 md:py-32 border-y border-luxury-gray">
+    <section className="relative overflow-hidden py-24 md:py-32 border-y border-luxury-gray min-h-[500px]">
       {/* Background Cinematic Layer */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 bg-luxury-black">
         <img 
           src="/image/buffeyabout.jpg" 
           alt="How We Make It Happen Background" 
           loading="lazy"
           decoding="async"
-          className="w-full h-full object-cover motion-safe:animate-cinematic-video motion-reduce:animate-none"
+          className="w-full h-full object-cover"
         />
+        
+        {/* Videos for each step */}
+        <AnimatePresence>
+          {activeStep && (
+            <motion.video
+              key={activeStep}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.7, ease: 'easeInOut' }}
+              src={steps.find(s => s.id === activeStep)?.video}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover z-0"
+              style={{ pointerEvents: 'none' }}
+            />
+          )}
+        </AnimatePresence>
+
         <div className="absolute inset-0 bg-luxury-black/90 md:bg-luxury-black/85 z-10" />
       </div>
 
@@ -66,9 +87,9 @@ const ProcessTimeline = () => {
 
         <div className="relative">
           {/* Horizontal Line for Desktop */}
-          <div className="hidden md:block absolute top-12 left-0 w-full h-[1px] bg-luxury-muted/20" />
+          <div className="hidden md:block absolute top-[56px] lg:top-[64px] left-0 w-full h-[1px] bg-luxury-muted/20" />
 
-          <div className="flex flex-col md:flex-row gap-12 md:gap-0 relative z-10 justify-between">
+          <div className="flex flex-col md:flex-row gap-8 md:gap-0 relative z-10 justify-between items-center md:items-start h-full">
             {steps.map((step, index) => (
               <motion.div 
                 key={step.id}
@@ -76,22 +97,23 @@ const ProcessTimeline = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="flex flex-col items-center text-center md:flex-1 relative"
+                className="flex flex-col items-center text-center md:flex-1 relative cursor-pointer group"
+                onMouseEnter={() => handleMouseEnter(step.id)}
+                onMouseLeave={handleMouseLeave}
+                onClick={() => handleClick(step.id)}
               >
-                {/* Number Circle */}
-                <div className="w-24 h-24 rounded-full bg-luxury-black border border-luxury-gold/30 flex justify-center items-center mb-8 relative z-10 shadow-lg">
-                  <span className="text-luxury-gold font-serif text-xl">{step.id}</span>
+                <div 
+                  className={`w-32 h-32 md:w-28 md:h-28 lg:w-32 lg:h-32 rounded-full bg-luxury-black border ${activeStep === step.id ? 'border-luxury-gold shadow-[0_0_20px_rgba(212,175,55,0.3)]' : 'border-luxury-gold/30 group-hover:border-luxury-gold/60'} flex justify-center items-center relative z-10 shadow-lg transition-all duration-500 p-4 mx-auto`}
+                >
+                  <span className={`text-luxury-gold text-xs md:text-[10px] lg:text-xs text-center tracking-widest uppercase leading-relaxed whitespace-normal break-words transition-colors duration-500 ${activeStep === step.id ? 'text-luxury-cream scale-105' : ''}`}>
+                    {step.title}
+                  </span>
                 </div>
                 
                 {/* Mobile vertical line connecting circles */}
                 {index !== steps.length - 1 && (
-                  <div className="md:hidden w-[1px] h-12 bg-luxury-muted/20 absolute top-24 left-1/2 -translate-x-1/2" />
+                  <div className="md:hidden w-[1px] h-8 bg-luxury-muted/20 absolute top-32 left-1/2 -translate-x-1/2" />
                 )}
-
-                <h3 className="text-luxury-cream text-lg tracking-widest mb-1">{step.title}</h3>
-                <p className="text-luxury-gold text-[10px] md:text-xs tracking-widest uppercase mb-4 opacity-80">{step.subtitle}</p>
-                <p className="text-luxury-muted text-sm font-light px-4 md:px-6 mb-2">{step.desc}</p>
-                <p className="text-luxury-muted text-[10px] md:text-xs font-light px-4 md:px-6 opacity-70">{step.subDesc}</p>
               </motion.div>
             ))}
           </div>

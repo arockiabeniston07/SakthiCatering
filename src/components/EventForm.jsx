@@ -187,8 +187,8 @@ const EventForm = ({ selectedMenuItems = [], removeMenuItem }) => {
   };
 
   return (
-    <div id="plan" className="w-full mt-12 md:mt-24">
-      <div className="container mx-auto px-6 md:px-12 flex flex-col lg:flex-row gap-16">
+    <div id="plan" className="w-full mt-12 md:mt-24 bg-transparent">
+      <div className="container mx-auto px-6 md:px-12 flex flex-col lg:flex-row gap-16 bg-transparent">
 
         {/* Founder Side */}
         <div className="w-full lg:w-1/3">
@@ -244,7 +244,7 @@ const EventForm = ({ selectedMenuItems = [], removeMenuItem }) => {
         </div>
 
         {/* Form Side */}
-        <div className="w-full lg:w-2/3">
+        <div className="w-full lg:w-2/3 bg-transparent">
           <AnimatePresence mode="wait">
             <motion.form
               key="form"
@@ -253,7 +253,7 @@ const EventForm = ({ selectedMenuItems = [], removeMenuItem }) => {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
               onSubmit={handleSubmit}
-              className="grid grid-cols-1 md:grid-cols-2 gap-6"
+              className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-transparent"
             >
               <div className="flex flex-col gap-2 relative pb-4">
                 <label className="text-xs text-luxury-muted tracking-widest uppercase">FULL NAME *</label>
@@ -267,16 +267,16 @@ const EventForm = ({ selectedMenuItems = [], removeMenuItem }) => {
               </div>
               <div className="flex flex-col gap-2 relative pb-4">
                 <label className="text-xs text-luxury-muted tracking-widest uppercase">EVENT TYPE *</label>
-                <select required name="eventType" value={formData.eventType} onChange={handleChange} onBlur={handleBlur} className={`bg-luxury-black border-b pb-2 text-luxury-cream focus:outline-none transition-colors appearance-none cursor-pointer ${errors.eventType ? 'border-red-500/50' : 'border-luxury-muted/30 focus:border-luxury-gold'}`}>
-                  <option value="" disabled>Select Event Type</option>
-                  <option value="Wedding">Wedding</option>
-                  <option value="Reception">Reception</option>
-                  <option value="Engagement">Engagement</option>
-                  <option value="Birthday">Birthday</option>
-                  <option value="Housewarming">Housewarming</option>
-                  <option value="Outdoor Catering">Outdoor Catering</option>
-                  <option value="Corporate Event">Corporate Event</option>
-                  <option value="Other">Other</option>
+                <select required name="eventType" value={formData.eventType} onChange={handleChange} onBlur={handleBlur} className={`bg-transparent border-b pb-2 text-luxury-cream focus:outline-none transition-colors appearance-none cursor-pointer ${errors.eventType ? 'border-red-500/50' : 'border-luxury-muted/30 focus:border-luxury-gold'}`}>
+                  <option value="" disabled className="bg-luxury-black">Select Event Type</option>
+                  <option value="Wedding" className="bg-luxury-black">Wedding</option>
+                  <option value="Reception" className="bg-luxury-black">Reception</option>
+                  <option value="Engagement" className="bg-luxury-black">Engagement</option>
+                  <option value="Birthday" className="bg-luxury-black">Birthday</option>
+                  <option value="Housewarming" className="bg-luxury-black">Housewarming</option>
+                  <option value="Outdoor Catering" className="bg-luxury-black">Outdoor Catering</option>
+                  <option value="Corporate Event" className="bg-luxury-black">Corporate Event</option>
+                  <option value="Other" className="bg-luxury-black">Other</option>
                 </select>
                 {errors.eventType && <span className="absolute bottom-0 left-0 text-[10px] text-red-400 tracking-wider">{errors.eventType}</span>}
               </div>

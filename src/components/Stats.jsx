@@ -72,7 +72,7 @@ const Stats = () => {
       {/* Background Cinematic Layer */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="/image/out.jpg" 
+          src="/image/15.jpg" 
           alt="Stats Background" 
           loading="lazy"
           decoding="async"

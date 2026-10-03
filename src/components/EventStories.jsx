@@ -3,14 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { siteConfig } from '../data/siteConfig';
 
-const galleryImages = [
-  { id: 1, src: "/image/g1.jpeg", alt: "Traditional wedding catering setup", span: "md:col-span-2 md:row-span-2" },
-  { id: 2, src: "/image/g2.jpeg", alt: "Corporate gala dinner", span: "md:col-span-1 md:row-span-1" },
-  { id: 3, src: "/image/g3.jpeg", alt: "Elegant service", span: "md:col-span-1 md:row-span-2" },
-  { id: 4, src: "/image/aboutvaazhai.jpeg", alt: "Artisanal plating", span: "md:col-span-2 md:row-span-1" },
-  { id: 5, src: "/image/g5.jpg", alt: "Family celebration setup", span: "md:col-span-1 md:row-span-1" },
-  { id: 6, src: "/image/g6.webp", alt: "Premium ingredients", span: "md:col-span-2 md:row-span-2" },
-  { id: 7, src: "/image/g4.jpeg", alt: "Fine dining detail", span: "md:col-span-1 md:row-span-1" }
+const galleryMedia = [
+  { id: 1, type: 'image', src: "/image/g2.jpeg", alt: "Traditional wedding catering setup" },
+  { id: 2, type: 'image', src: "/image/g4.jpeg", alt: "Corporate gala dinner" },
+  { id: 3, type: 'video', src: "/image/hero.mp4", alt: "Catering highlights" },
+  { id: 4, type: 'image', src: "/image/g3.jpeg", alt: "Elegant service" },
+  { id: 7, type: 'image', src: "/image/g6.webp", alt: "Premium ingredients" },
+  { id: 8, type: 'image', src: "/image/g1.jpeg", alt: "Fine dining detail" }
 ];
 
 const EventStories = () => {
@@ -24,14 +23,14 @@ const EventStories = () => {
   const nextImage = useCallback((e) => {
     if (e) e.stopPropagation();
     if (selectedIndex !== null) {
-      setSelectedIndex((prev) => (prev === galleryImages.length - 1 ? 0 : prev + 1));
+      setSelectedIndex((prev) => (prev === galleryMedia.length - 1 ? 0 : prev + 1));
     }
   }, [selectedIndex]);
 
   const prevImage = useCallback((e) => {
     if (e) e.stopPropagation();
     if (selectedIndex !== null) {
-      setSelectedIndex((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1));
+      setSelectedIndex((prev) => (prev === 0 ? galleryMedia.length - 1 : prev - 1));
     }
   }, [selectedIndex]);
 
@@ -99,25 +98,28 @@ const EventStories = () => {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 auto-rows-[300px] md:auto-rows-[250px]">
-          {galleryImages.map((img, i) => (
-            <motion.div 
-              key={img.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className={`relative group cursor-pointer overflow-hidden rounded-md w-full h-full ${img.span}`}
-              onClick={() => openLightbox(i)}
-            >
-              <img 
-                src={img.src} 
-                alt={img.alt}
-                loading="lazy"
-                className="w-full h-full object-cover transition-all duration-700 ease-out md:group-hover:scale-[1.03] md:group-hover:brightness-110"
-              />
-            </motion.div>
-          ))}
+        <div className="flex justify-center w-full">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6 }}
+            className="relative group cursor-pointer overflow-hidden rounded-md w-full max-w-sm aspect-[3/4] md:aspect-[4/5] shadow-2xl mx-auto"
+            onClick={() => openLightbox(0)}
+          >
+            <img 
+              src="/image/g3.jpeg" 
+              alt="Gallery Cover"
+              loading="lazy"
+              className="w-full h-full object-cover transition-all duration-700 ease-out md:group-hover:scale-[1.05] md:group-hover:brightness-110"
+            />
+            <div className="absolute inset-0 bg-black/30 group-hover:bg-black/10 transition-colors duration-500" />
+            <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <span className="text-luxury-gold uppercase tracking-widest text-sm border border-luxury-gold px-6 py-2 backdrop-blur-sm bg-black/40 whitespace-nowrap">
+                VIEW GALLERY
+              </span>
+            </div>
+          </motion.div>
         </div>
 
         <motion.div 
@@ -180,18 +182,34 @@ const EventStories = () => {
               className="relative w-full max-w-6xl h-full max-h-[85vh] px-4 md:px-24 flex items-center justify-center flex-col"
               onClick={(e) => e.stopPropagation()}
             >
-              <motion.img
-                key={selectedIndex}
-                initial={{ opacity: 0, scale: 0.98 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3 }}
-                src={galleryImages[selectedIndex].src}
-                alt={galleryImages[selectedIndex].alt}
-                className="w-auto h-auto max-w-full max-h-full object-contain shadow-2xl rounded-sm"
-                draggable={false}
-              />
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={selectedIndex}
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.98 }}
+                  transition={{ duration: 0.3 }}
+                  className="w-full h-full flex items-center justify-center"
+                >
+                  {galleryMedia[selectedIndex].type === 'video' ? (
+                    <video
+                      src={galleryMedia[selectedIndex].src}
+                      controls
+                      playsInline
+                      className="w-auto h-auto max-w-full max-h-full object-contain shadow-2xl rounded-sm bg-black"
+                    />
+                  ) : (
+                    <img
+                      src={galleryMedia[selectedIndex].src}
+                      alt={galleryMedia[selectedIndex].alt}
+                      className="w-auto h-auto max-w-full max-h-full object-contain shadow-2xl rounded-sm"
+                      draggable={false}
+                    />
+                  )}
+                </motion.div>
+              </AnimatePresence>
               <div className="absolute bottom-[-40px] left-1/2 -translate-x-1/2 text-luxury-muted tracking-widest text-sm font-light">
-                {String(selectedIndex + 1).padStart(2, '0')} / {String(galleryImages.length).padStart(2, '0')}
+                {String(selectedIndex + 1).padStart(2, '0')} / {String(galleryMedia.length).padStart(2, '0')}
               </div>
             </div>
           </motion.div>

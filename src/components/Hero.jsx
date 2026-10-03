@@ -8,7 +8,7 @@ const Hero = () => {
   const opacity = useTransform(scrollY, [0, 500], [1, 0]);
 
   return (
-    <section id="home" className="relative h-screen w-full overflow-hidden bg-luxury-black">
+    <section id="home" className="relative min-h-[100svh] w-full overflow-hidden bg-luxury-black flex flex-col">
       {/* Background Cinematic Layer */}
       <motion.div 
         style={{ y }}
@@ -34,7 +34,7 @@ const Hero = () => {
       </motion.div>
 
       {/* Content */}
-      <div className="relative z-20 container mx-auto px-6 md:px-12 h-full flex flex-col justify-center items-center text-center pt-20">
+      <div className="relative z-20 container mx-auto px-6 md:px-12 flex-1 flex flex-col justify-center items-center text-center pt-32 pb-20 md:pt-20 md:pb-0">
         <motion.div
           style={{ opacity }}
           initial={{ opacity: 0, y: 30 }}

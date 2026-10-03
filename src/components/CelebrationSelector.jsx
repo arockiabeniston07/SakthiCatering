@@ -68,7 +68,7 @@ const CelebrationSelector = () => {
       {/* Background Cinematic Layer */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="/image/servicesback.jpg" 
+          src="/image/re.webp" 
           alt="Outdoor Catering Background" 
           loading="lazy"
           decoding="async"
